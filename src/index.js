@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import { standard as rules } from './a11y/react-a11y-rules';
+import { standard } from './a11y/reactA11yRules';
 
 if (process.env.NODE_ENV === 'development') {
     const a11y = require('react-a11y').default;
     a11y(React, ReactDOM, {
-        rules
+        rules: standard
     });
 }
 

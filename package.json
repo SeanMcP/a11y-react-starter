@@ -30,6 +30,7 @@
   ],
   "devDependencies": {
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "react-a11y": "^1.1.0"
+    "react-a11y": "^1.1.0",
+    "react-axe": "^3.0.2"
   }
 }

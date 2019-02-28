@@ -5,11 +5,18 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
 if (process.env.NODE_ENV === 'development') {
+    // *****************************************
+    // Using react-a11y
+    // *****************************************
     // const a11y = require('react-a11y').default;
     // const { standard } = require('./a11y/reactA11yRules');
     // a11y(React, ReactDOM, {
     //     rules: standard
     // });
+    
+    // *****************************************
+    // Using react-a11y
+    // *****************************************
     const axe = require('react-axe');
     axe(React, ReactDOM, 1000);
 }

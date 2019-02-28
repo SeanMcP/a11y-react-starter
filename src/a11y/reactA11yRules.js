@@ -1,9 +1,9 @@
-/*
-    By default, all react-a11y rules are included. Comment
-    out any rules that don't fit your particular use case.
-
-    Link to documentation:
-    https://github.com/reactjs/react-a11y/tree/master/docs/rules
+/**
+ * By default, all react-a11y rules are included. Comment
+ * out any rules that don't fit your particular use case.
+ * 
+ * Link to documentation:
+ * https://github.com/reactjs/react-a11y/tree/master/docs/rules
 */
 
 export const standard = {

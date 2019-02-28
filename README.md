@@ -2,69 +2,69 @@
 
 A lightly-configured [create-react-app](https://github.com/facebook/create-react-app) with accessibility checking baked in.
 
-## Available Scripts
+[Click here for the creact-react-app README](./CRA-README.md).
 
-In the project directory, you can run:
+## Accessibility checks
 
-### `npm start`
+In the project directory, you have the following baked in:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### jsx-a11y
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+jsx-a11y is a static AST checker for accessibility rules on JSX elements. If you use a linting text editor like VS Code, it will show you potential accessibility errors even before you hit save.
 
-### `npm test`
+[View more information on jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y).
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### react-axe
 
-### `npm run build`
+react-axe by Deque provides accessibility auditing during development. Any errors identified are displayed in the console with helpful resources to fix the issue. Due to zero-configuration, react-axe is enabled by default in this application.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[View more information on react-axe](https://github.com/dequelabs/react-axe)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### react-a11y
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Like react-axe, react-a11y provides accessibility auditing during development. It also provides more rule configurations that may be useful to users who are more familiar with accessible development. react-a11y is **not enabled** by default.
 
-### `npm run eject`
+To switch from react-axe to react-a11y, [go to `index.js`](./src/index.js). It should like this:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```jsx
+if (process.env.NODE_ENV === 'development') {
+    /**
+     * react-a11y
+     */
+    // const a11y = require('react-a11y').default;
+    // const { standard } = require('./a11y/reactA11yRules');
+    // a11y(React, ReactDOM, {
+    //     rules: standard
+    // });
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    /**
+     * react-axe
+     */
+    const axe = require('react-axe');
+    axe(React, ReactDOM, 1000);
+}
+```
+Comment out the lines pertaining to react-axe and un-comment the lines for react-a11y:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```jsx
+if (process.env.NODE_ENV === 'development') {
+    /**
+     * react-a11y
+     */
+    const a11y = require('react-a11y').default;
+    const { standard } = require('./a11y/reactA11yRules');
+    a11y(React, ReactDOM, {
+        rules: standard
+    });
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    /**
+     * react-axe
+     */
+    // const axe = require('react-axe');
+    // axe(React, ReactDOM, 1000);
+}
+```
 
-## Learn More
+If you want to customize react-a11y further, [check out `src/a11y/reactA11yRules.js` for its rule configuration](./src/a11y/reactA11yRules.js).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[View more information on react-a11y](https://github.com/reactjs/react-a11y/tree/master/docs/rules).

@@ -1,6 +1,6 @@
 # A11y React Starter
 
-A lightly-configured [create-react-app](https://github.com/facebook/create-react-app) with accessibility checking baked in.
+💫 A lightly-configured [create-react-app](https://github.com/facebook/create-react-app) with accessibility checking baked in.
 
 [Click here for the creact-react-app README](./CRA-README.md).
 
